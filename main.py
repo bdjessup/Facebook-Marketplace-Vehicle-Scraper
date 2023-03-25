@@ -1,5 +1,6 @@
 import collections
 import csv
+import os
 import re
 from datetime import datetime
 
@@ -30,7 +31,7 @@ def main():
         # find class for price
         # type: ignore
         re_price = re.compile("\$[0123456789,]+")
-        prices_obj = soup.body.findAll(text=re_price)
+        prices_obj = soup.body.findAll(string=re_price)
         parent_list = []
 
         for price_obj in prices_obj:
@@ -91,6 +92,10 @@ def main():
 
                     print(year, name, "\b,", price, "\b,",
                           mileage, "\b,", loc, "\b,", link)
+    
+    # remove the tmp.mhtml file
+    os.remove(testfile)
+    
 
 
 if __name__ == "__main__":
