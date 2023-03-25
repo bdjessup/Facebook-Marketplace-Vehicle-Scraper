@@ -10,7 +10,7 @@ from selenium.webdriver.common.keys import Keys
 from utils import *
 collections.Callable = collections.abc.Callable                         # type: ignore
 
-with open('Facebook Marketplace Car Scraper\setup.json') as fin:        # type: ignore
+with open('./setup.json') as fin:        # type: ignore
     setup = json.load(fin)
 
 
@@ -51,7 +51,9 @@ def main():
 
     # sort data
     us = list(zip(names, years, prices, mileages, locs, links))
-    us = sorted(us)
+    # x[1] refers to the 'years' in the tuple
+    us = sorted(us, key=lambda x: x[1])
+
     years, names, prices, mileages, locs, links = [], [], [], [], [], []
     for u in us:
         names.append(u[0])

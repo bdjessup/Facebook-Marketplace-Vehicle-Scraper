@@ -1,13 +1,14 @@
 {
   "facebook": {
-    "email": "",
-    "password": "",
-    "WebDriver_Path": "C:\\Users\\livxy\\OneDrive\\Documents\\Chrome Driver\\chromedriver.exe",
-    "query": "r6",
-    "desired_maximum_mileage": 16000,
-    "desired_minimum_year": 2006,
+    "email": "therealnightowlf@gmail.com",
+    "password": "Aitakeover2023!",
+    "WebDriver_Path": "C:\\Users\\benxb\\Documents\\chromedriver.exe",
+    "query": "Honda Civic",
     "minimum_price": 100,
     "maximum_price": 2000,
+
+    "desired_maximum_mileage": 16000,
+    "desired_minimum_year": 2006,
     "carBrand": "Yamaha"
   }
 }

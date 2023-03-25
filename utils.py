@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-with open("Facebook Marketplace Car Scraper\setup.json") as fin:
+with open("./setup.json") as fin:
     setup = json.load(fin)
 
 # search queries
@@ -39,43 +39,43 @@ def save_page(url, fname):
         setup['facebook']['WebDriver_Path']), options=options)
     # Bypass facebook login
     browser.get(url)
-    browser.find_element(By.ID, "email").send_keys(setup['facebook']['email'])
-    browser.find_element(By.ID, "pass").send_keys(
+    browser.find_element(By.NAME, "email").send_keys(setup['facebook']['email'])
+    browser.find_element(By.NAME, "pass").send_keys(
         setup['facebook']['password'])
-    browser.find_element(By.ID, "loginbutton").click()
+    browser.find_element(By.XPATH, "//div[@aria-label='Accessible login button']").click()
     sleep(5)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div/span/div/div/div/div/label/input").click()
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Search Marketplace']").click()
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div/span/div/div/div/div/label/input").clear()
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Search Marketplace']").clear()
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div/span/div/div/div/div/label/input").send_keys(setup['facebook']['query'])
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Search Marketplace']").send_keys(setup['facebook']['query'])
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div/div/span/div/div/div/div/label/input").send_keys(Keys.ENTER)
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Search Marketplace']").send_keys(Keys.ENTER)
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[1]/label/input").click()
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Minimum Range']").click()
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[1]/label/input").clear()
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Minimum Range']").clear()
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[1]/label/input").send_keys(setup['facebook']['minimum_price'])
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Minimum Range']").send_keys(setup['facebook']['minimum_price'])
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[2]/label/input").click()
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Maximum Range']").click()
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[2]/label/input").clear()
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Maximum Range']").clear()
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[2]/label/input").send_keys(setup['facebook']['maximum_price'])
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Maximum Range']").send_keys(setup['facebook']['maximum_price'])
     sleep(1)
-    browser.find_element_by_xpath(
-        "/html/body/div[1]/div/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[3]/div[2]/span[2]/label/input").send_keys(Keys.ENTER)
+    browser.find_element(By.XPATH,
+        "//input[@aria-label='Search Marketplace']").send_keys(Keys.ENTER)
     print(browser.current_url)
 
     # scroll
