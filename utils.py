@@ -76,6 +76,12 @@ def save_page(url, fname):
     sleep(1)
     browser.find_element(By.XPATH,
         "//input[@aria-label='Search Marketplace']").send_keys(Keys.ENTER)
+    
+    browser.find_element(By.XPATH, "/html/body/div[1]/div/div[1]/div/div[5]/div/div/div[3]/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/span/span").click()
+    browser.find_element(By.XPATH, "/html/body/div[1]/div/div[1]/div/div[5]/div/div/div[3]/div/div/div[1]/div[1]/div[1]/div/div[3]/div[1]/div[2]/div[3]/div[2]/div[2]/div[2]/div/div[1]/div[3]/div/div[1]/div/div[1]/div/div/div/span").click()
+
+    
+    sleep(1)
     print(browser.current_url)
 
     # scroll
