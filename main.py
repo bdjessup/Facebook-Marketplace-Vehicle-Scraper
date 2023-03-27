@@ -67,36 +67,28 @@ def main():
     # export data
     fname = str(datetime.now()).replace(
         ":", "-")[2:-5].replace(" ", "--")  # datetime file save name
-    with open(f"sc_{fname}.csv", 'w', newline='') as f,\
-            open(f"sc_{fname}_{setup['facebook']['carBrand']}.csv", 'w', newline='') as fy,\
-            open(f"sc_{fname}_desired.csv", 'w', newline='') as fz:
+    with open(f"sc_{fname}.csv", 'w', newline='') as f:
 
         headers = ["year", "name", "price", "mileage", "location", "link"]
         csw = csv.writer(f)
-        csw2 = csv.writer(fy)
-        csw3 = csv.writer(fz)
+        # csw2 = csv.writer(fy)
+        # csw3 = csv.writer(fz)
         csw.writerow(headers)
-        csw2.writerow(headers)
-        csw3.writerow(headers)
 
         for year, name, price, mileage, loc, link in zip(years, names, prices, mileages, locs, links):
             csw.writerow([year, name, price, mileage, loc, link])
-            if setup["facebook"]["carBrand"].lower() in name.lower():   # if car name is in name
-                csw2.writerow([year, name, price, mileage, loc, link])
 
-                # if mileage is not available - lazy rn sorry
-                if str(mileage) in ["Dealership", "N/A"]:
-                    pass
-                elif int(mileage) < (setup['facebook']['desired_maximum_mileage']) and int(year) > (setup['facebook']['desired_minimum_year']):
-                    csw3.writerow([year, name, price, mileage, loc, link])
+            # if mileage is not available - lazy rn sorry
+            if str(mileage) in ["Dealership", "N/A"]:
+                pass
+            elif int(mileage) < (setup['facebook']['max_mileage']) and int(year) > (setup['facebook']['min_year']) and (setup["facebook"]["make"].lower() in name.lower() and setup["facebook"]["model"].lower() in name.lower()):
+                csw.writerow([year, name, price, mileage, loc, link])
 
-                    print(year, name, "\b,", price, "\b,",
-                          mileage, "\b,", loc, "\b,", link)
+                print(year, name, "\b,", price, "\b,",
+                        mileage, "\b,", loc, "\b,", link)
     
     # remove the tmp.mhtml file
     os.remove(testfile)
-    
-
 
 if __name__ == "__main__":
     main()

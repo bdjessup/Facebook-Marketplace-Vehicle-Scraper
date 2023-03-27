@@ -15,7 +15,7 @@ with open("./setup.json") as fin:
 
 # search queries
 location = "mansfield"
-query = "r6"
+model = "r6"
 exact = "False"
 maxPrice = 2000
 
@@ -51,7 +51,7 @@ def save_page(url, fname):
         "//input[@aria-label='Search Marketplace']").clear()
     sleep(1)
     browser.find_element(By.XPATH,
-        "//input[@aria-label='Search Marketplace']").send_keys(setup['facebook']['query'])
+        "//input[@aria-label='Search Marketplace']").send_keys(setup['facebook']['model'])
     sleep(1)
     browser.find_element(By.XPATH,
         "//input[@aria-label='Search Marketplace']").send_keys(Keys.ENTER)
