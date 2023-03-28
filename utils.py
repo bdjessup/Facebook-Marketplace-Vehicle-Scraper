@@ -63,7 +63,7 @@ def save_page(url, fname):
         "//input[@aria-label='Minimum Range']").clear()
     sleep(1)
     browser.find_element(By.XPATH,
-        "//input[@aria-label='Minimum Range']").send_keys(setup['facebook']['minimum_price'])
+        "//input[@aria-label='Minimum Range']").send_keys(setup['facebook']['min_price'])
     sleep(1)
     browser.find_element(By.XPATH,
         "//input[@aria-label='Maximum Range']").click()
@@ -72,7 +72,7 @@ def save_page(url, fname):
         "//input[@aria-label='Maximum Range']").clear()
     sleep(1)
     browser.find_element(By.XPATH,
-        "//input[@aria-label='Maximum Range']").send_keys(setup['facebook']['maximum_price'])
+        "//input[@aria-label='Maximum Range']").send_keys(setup['facebook']['max_price'])
     sleep(1)
     browser.find_element(By.XPATH,
         "//input[@aria-label='Search Marketplace']").send_keys(Keys.ENTER)

@@ -5,10 +5,11 @@ import json
 import os
 import pandas as pd
 import main  # Assuming the existing script is named main.py
+from dotenv import load_dotenv
 
+load_dotenv('.env')
 intents = discord.Intents.default()
 intents.message_content = True
-
 client = commands.Bot()
 
 @client.event
@@ -60,8 +61,7 @@ async def search(ctx):
     df = pd.read_csv(csv_file)
     top_rows = df.head(3)
     
-    
-
+    # loop over the 
     for index, row in top_rows.iterrows():
         year, name, price, mileage, loc, link = row['year'], row['name'], row['price'], row['mileage'], row['location'], row['link']
         # result = f"Year: {year}\nName: {name}\nPrice: {price}\nMileage: {mileage}\nLocation: {loc}\nLink: {link}"
@@ -80,86 +80,5 @@ async def search(ctx):
         await ctx.followup.send(name, embed=embed)
 
 # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual Discord bot token
-client.run(os.getenv('DISCORD_BOT_TOKEN'))
-
-
-# import json
-# import os
-# import pandas as pd
-# import discord
-# from discord import app_commands
-# from dotenv import load_dotenv
-# import main  # Assuming the existing script is named main.py
-
-# # load env for discord bot token
-# load_dotenv()
-# # define intents, client and tree
-# intents = discord.Intents.default()
-# client = discord.Client(intents=intents)
-# tree = app_commands.CommandTree(client)
-
-# @client.event
-# async def on_ready():
-#     await tree.sync(guild=discord.Object(id=os.getenv('DISCORD_GUILD_ID')))
-#     # print "ready" in the console when the bot is ready to work
-#     print("ready")
-
-# @tree.command(name="modify_setup",
-#              description="Create a Facebook Marketplace search with price preferences",
-#              options=[
-#                  {
-#                      "name": "model",
-#                      "description": "Search model",
-#                      "type": 3,
-#                      "required": True
-#                  },
-#                  {
-#                      "name": "min_price",
-#                      "description": "Minimum price",
-#                      "type": 4,
-#                      "required": True
-#                  },
-#                  {
-#                      "name": "max_price",
-#                      "description": "Maximum price",
-#                      "type": 4,
-#                      "required": True
-#                  }
-#              ])
-
-# async def modify_setup(interaction):
-#     with open("./setup.json", "r") as f:
-#         setup = json.load(f)
-
-#     # define interaction data
-#     model = interaction.data['options'][0]['value']
-#     min_price = interaction.data['options'][1]['value']
-#     max_price = interaction.data['options'][2]['value']
-    
-#     setup['facebook']['model'] = model
-#     setup['facebook']['min_price'] = min_price
-#     setup['facebook']['max_price'] = max_price
-
-#     with open("./setup.json", "w") as f:
-#         json.dump(setup, f)
-
-#     await interaction.response.send_message(f"Setup modified: model={model}, min_price={min_price}, max_price={max_price}")
-
-# @tree.command(name="run_scraper",
-#             description="Run the scraper and return the top three results")
-
-# async def run_scraper(interaction):
-#     main.main()  # Run your existing script
-#     # Assuming the last generated CSV is the desired one
-#     csv_file = sorted([f for f in os.listdir() if f.startswith('sc_') and f.endswith('.csv')])[-1]
-#     df = pd.read_csv(csv_file)
-#     top_rows = df.head(3)
-
-#     for index, row in top_rows.iterrows():
-#         year, name, price, mileage, loc, link = row['year'], row['name'], row['price'], row['mileage'], row['location'], row['link']
-#         result = f"Year: {year}\nName: {name}\nPrice: {price}\nMileage: {mileage}\nLocation: {loc}\nLink: {link}"
-#         await interaction.response.send_message(result)
-
-# # Replace 'YOUR_DISCORD_BOT_TOKEN' with your actual Discord bot token
-# client.run(os.getenv('DISCORD_BOT_TOKEN'))
-
+botToken = os.environ.get('DISCORD_BOT_TOKEN')
+client.run(botToken)

@@ -3,13 +3,11 @@
     "email": "therealnightowlf@gmail.com",
     "password": "Aitakeover2023!",
     "WebDriver_Path": "C:\\Users\\benxb\\Documents\\chromedriver.exe",
-    "minimum_price": 500,
-    "maximum_price": 5000,
-    "max_mileage": 100000,
-    "min_year": 2012,
-    "make": "subaru",
-    "model": "forester",
-    "min_price": 5000,
-    "max_price": 20000
+    "min_price": 500,
+    "max_price": 5000,
+    "max_mileage": 300000,
+    "min_year": 1992,
+    "make": "honda",
+    "model": "civic"
   }
 }
