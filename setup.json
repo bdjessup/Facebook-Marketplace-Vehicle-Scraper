@@ -2,7 +2,7 @@
   "facebook": {
     "email": "therealnightowlf@gmail.com",
     "password": "Aitakeover2023!",
-    "WebDriver_Path": "C:\\Users\\benxb\\Documents\\chromedriver.exe",
+    "WebDriver_Path": "chromedriver.exe",
     "min_price": 500,
     "max_price": 5000,
     "max_mileage": 300000,
